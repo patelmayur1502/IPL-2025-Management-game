@@ -563,6 +563,11 @@ export class GameDatabase {
   getTeams(): Team[] {
     return this.getAllTeams();
   }
+  
+  // This is the new method to fix the error
+  getAvailableTeams(): Team[] {
+    return this.teams.filter(t => t.manager === undefined);
+  }
 
   getTeamById(id: string): Team | undefined {
     return this.teams.find(t => t.id === id);
